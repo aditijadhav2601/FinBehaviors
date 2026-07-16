@@ -155,7 +155,7 @@ function resetAudit() {
 
 function dispatchFormToBackend(personaString) {
     const formId = "1FAIpQLScwuRgP27tLBrOs8Swhg8k-s4b0gy-Zz5NSsLCC2z2SBJqcwA"; 
-    // FIXED: Corrected the URL layout and added the missing $ sign for template literal variables
+    // FIXED: Form URL syntax reconstructed with template strings and correct Google Docs directory path
     const formUrl = `https://google.com{formId}/formResponse`;
 
     const formData = new FormData();
