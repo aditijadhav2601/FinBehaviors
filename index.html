@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinBehaviors - The Digital Spending Audit</title>
+    <!-- CSS and Fonts -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://googletagmanager.com"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-CJLFE1H32K', { 'cookie_flags': 'SameSite=None;Secure' });
-    </script>
 </head>
 <body>
 
-    <!-- Sticky Navigation Menu overlay grid -->
+    <!-- Top Navigation Bar Menu -->
     <nav>
         <div class="logo"><i class="fa-solid fa-microchip"></i> Fin<span>Behaviors</span></div>
         <ul>
@@ -27,10 +21,10 @@
         </ul>
     </nav>
 
-    <!-- HOME PAGE SECTION (Platform view card frames) -->
+    <!-- HOME PAGE SECTION (Audit Component Engine) -->
     <header id="home">
         <div class="audit-container">
-            
+            <!-- Welcome Intro Card -->
             <div id="audit-intro" class="audit-card">
                 <h2>Project Framework: Phase I</h2>
                 <h1>FinBehaviors: The Digital Spending Audit</h1>
@@ -40,6 +34,7 @@
                 <button class="btn" onclick="startAudit()">Begin Digital Audit</button>
             </div>
 
+            <!-- Core Questionnaire Engine Card -->
             <div id="audit-card" class="audit-card hidden">
                 <div class="progress-bar"><div id="progress-indicator"></div></div>
                 <div class="metric-badge">Question <span id="current-index-display">1</span> of 9</div>
@@ -47,40 +42,46 @@
                 <div id="options-container"></div>
             </div>
 
+            <!-- Global Insights Dashboard Results Panel -->
             <div id="audit-result" class="audit-card hidden">
                 <div class="success-icon"><i class="fa-solid fa-square-poll-vertical"></i></div>
                 <h1 class="dashboard-title">Global Insights Dashboard</h1>
                 <p class="dashboard-thanks">Thank you for participating in the FinBehaviors study!</p>
                 <div class="score-badge">Your Total Score: <span id="user-score-display">0</span> Points</div>
+
                 <div class="active-persona-box">
                     <h2>Your Spending Persona:</h2>
                     <div id="persona-title-area">Calculating...</div>
                     <p id="persona-desc-area">Processing behavioral weights...</p>
                 </div>
+
+                <!-- Scoring System Matrix Brackets with Financial Visuals -->
                 <div class="matrix-breakdown">
                     <h3>Scoring System Index</h3>
                     <div class="matrix-row" id="bracket-guardian">
                         <img src="https://unsplash.com" alt="Financial Guardian" class="matrix-thumb">
                         <div>
                             <strong>5 to 8 Points: The Financial Guardian</strong>
-                            <p>You maintain strict, conscious boundaries with your capital.</p>
+                            <p>You maintain strict, conscious boundaries with your capital. You resist impulse digital upgrades and closely monitor automated account leaks.</p>
                         </div>
                     </div>
                     <div class="matrix-row" id="bracket-optimizer">
                         <img src="https://unsplash.com" alt="Value Optimizer" class="matrix-thumb">
                         <div>
                             <strong>9 to 11 Points: The Value Optimizer</strong>
-                            <p>You treat personal finance strategically.</p>
+                            <p>You treat personal finance strategically. You track metrics, maximize credit rewards, and consciously balance modern convenience with savings.</p>
                         </div>
                     </div>
                     <div class="matrix-row" id="bracket-target">
                         <img src="https://unsplash.com" alt="Algorithmic Target" class="matrix-thumb">
                         <div>
                             <strong>12 to 15 Points: The Algorithmic Target</strong>
-                            <p>Frictionless tech platforms easily catch your budget.</p>
+                            <p>Frictionless tech platforms easily catch your budget. Digital wallets, automated trials, and hyper-targeted loops deeply influence your daily cash flow.</p>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Live Risk Bar Indexes -->
                 <div class="analytics-dashboard">
                     <h3><i class="fa-solid fa-chart-pie"></i> Your Contextual Risk Assessment</h3>
                     <div class="visual-bar-group">
@@ -92,52 +93,55 @@
                         <div class="mock-bar"><div class="fill-bar" id="global-bar" style="width: 0%; background-color: #10b981;">0%</div></div>
                     </div>
                 </div>
+
                 <button class="btn reset-btn" onclick="resetAudit()">Retake Spending Audit</button>
             </div>
-
         </div>
     </header>
 
-    <!-- ABOUT SECTION VIEW -->
+    <!-- ABOUT SECTION PAGE -->
     <section id="about" class="content-section">
         <div class="section-container">
             <div class="text-side">
                 <h2>About the Project</h2>
                 <p>FinBehaviors evaluates how instantaneous transaction pathways systematically degrade natural spending reflection milestones across differing global markets.</p>
+                <p>As payments transition into completely frictionless biometric scans, one-click checkout loops, and background auto-renewals, our psychological barriers to purchasing disintegrate.</p>
             </div>
             <div class="image-side">
-                <img src="https://unsplash.com" alt="App Tracker Visual" class="topic-img">
+                <img src="https://unsplash.com" alt="Digital Tracker app" class="topic-img">
             </div>
         </div>
     </section>
 
-    <!-- WORK SECTION VIEW -->
+    <!-- WORK SECTION PAGE -->
     <section id="work" class="content-section gray-bg">
         <div class="section-container reverse">
             <div class="text-side">
                 <h2>Our Research Operations</h2>
                 <p>Our operations focus on analyzing localized micro-transactions and hidden subscription structures within active emerging financial spaces.</p>
+                <p>By assessing tracking metrics across diverse cross-generational groups, our framework maps data weight vectors to expose systemic financial traps hidden inside popular smartphone software applications.</p>
             </div>
             <div class="image-side">
-                <img src="https://unsplash.com" alt="Charts Visual" class="topic-img">
+                <img src="https://unsplash.com" alt="Financial Analytics charts" class="topic-img">
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION VIEW -->
+    <!-- CONTACT SECTION PAGE -->
     <section id="contact" class="content-section">
         <div class="section-container">
             <div class="text-side">
                 <h2>Get in Touch</h2>
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message logged.');">
+                <p>Are you interested in collaborating with our behavioral data science analytics team? Send us a message below.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message logged successfully.');">
                     <input type="text" placeholder="Your Name" required class="audit-input">
                     <input type="email" placeholder="Your Email" required class="audit-input">
-                    <textarea placeholder="Message Details" required class="audit-input" style="height:80px; resize:none;"></textarea>
+                    <textarea placeholder="Message Description" required class="audit-input" style="height:100px; resize:none;"></textarea>
                     <button type="submit" class="btn">Send Message</button>
                 </form>
             </div>
             <div class="image-side">
-                <img src="https://unsplash.com" alt="Consumer visual" class="topic-img">
+                <img src="https://unsplash.com" alt="Digital consumer visual" class="topic-img">
             </div>
         </div>
     </section>
