@@ -159,15 +159,17 @@ function dispatchFormToBackend(personaString) {
 
         // Use URLSearchParams for application/x-www-form-urlencoded encoding
     const params = new URLSearchParams();
-    params.append("entry.2108368405", String(collectedResponses.q1 || ""));   
-    params.append("entry.48214385", String(collectedResponses.q2 || ""));     
-    params.append("entry.1777157549", String(collectedResponses.q3 || ""));   
-    params.append("entry.1931755500", String(collectedResponses.q4 || ""));    
-    params.append("entry.533743517", String(collectedResponses.q5 || ""));     
-    params.append("entry.598789064", String(collectedResponses.q6 || ""));     
-    params.append("entry.1058348873", String(collectedResponses.q7 || ""));    
-    params.append("entry.778956994", String(collectedResponses.q8 || ""));     
-    params.append("entry.1061432342", String(collectedResponses.q9 || ""));    
+   params.append("entry.2108368405", String(collectedResponses.name || collectedResponses.q1 || ""));   
+    params.append("entry.48214385", String(collectedResponses.age || collectedResponses.q2 || ""));     
+    params.append("entry.1777157549", String(collectedResponses.geo || collectedResponses.q3 || ""));   
+    
+    // Audit questions: Smart-matches either sequential or shifted question numbering
+    params.append("entry.1931755500", String(collectedResponses.q4 || collectedResponses.q1 || ""));    
+    params.append("entry.533743517", String(collectedResponses.q5 || collectedResponses.q2 || ""));     
+    params.append("entry.598789064", String(collectedResponses.q6 || collectedResponses.q3 || ""));     
+    params.append("entry.1058348873", String(collectedResponses.q7 || collectedResponses.q4 || ""));    
+    params.append("entry.778956994", String(collectedResponses.q8 || collectedResponses.q5 || ""));     
+    params.append("entry.1061432342", String(collectedResponses.q9 || collectedResponses.q6 || ""));    
 
     fetch(formUrl, { 
         method: "POST", 
