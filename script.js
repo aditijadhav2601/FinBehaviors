@@ -157,18 +157,19 @@ function dispatchFormToBackend(personaString) {
     const formId = "1FAIpQLScwuRgP27tLBrOs8Swhg8k-s4b0gy-Zz5NSsLCC2z2SBJqcwA"; 
     const formUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
 
-    const formData = new FormData();
-    formData.append("entry.2108368405", collectedResponses.name);   
-    formData.append("entry.48214385", collectedResponses.age);     
-    formData.append("entry.1777157549", collectedResponses.geo);   
-    formData.append("entry.1931755500", collectedResponses.q1);    
-    formData.append("entry.533743517", collectedResponses.q2);     
-    formData.append("entry.598789064", collectedResponses.q3);     
-    formData.append("entry.1058348873", collectedResponses.q4);    
-    formData.append("entry.778956994", collectedResponses.q5);     
-    formData.append("entry.1061432342", collectedResponses.q6);    
+        // Use URLSearchParams for application/x-www-form-urlencoded encoding
+    const params = new URLSearchParams();
+    params.append("entry.1931755500", String(collectedResponses.q1 || ""));    
+    params.append("entry.533743517", String(collectedResponses.q2 || ""));     
+    params.append("entry.598789064", String(collectedResponses.q3 || ""));     
+    params.append("entry.1058348873", String(collectedResponses.q4 || ""));    
+    params.append("entry.778956994", String(collectedResponses.q5 || ""));     
+    params.append("entry.1061432342", String(collectedResponses.q6 || ""));    
 
-    fetch(formUrl, { method: "POST", mode: "no-cors", body: formData })
+    fetch(formUrl, { 
+        method: "POST", 
+        mode: "no-cors", 
+        body: params // Fetch automatically sets the correct Content-Type for URLSearchParams
+    })
     .then(() => console.log("Google Sheet synchronized smoothly!"))
     .catch((error) => console.error("Pipeline upload error:", error));
-}
