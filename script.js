@@ -19,7 +19,6 @@ function startAudit() {
     document.getElementById("audit-card").classList.remove("hidden");
     currentIndex = 0;
     totalAccumulatedScore = 0;
-    if(typeof gtag === 'function') { gtag('event', 'audit_started', { 'event_category': 'Engagement' }); }
     renderMetric();
 }
 
@@ -64,7 +63,6 @@ function renderMetric() {
 }
 
 function saveStepMetrics(selectedText, choiceIndex) {
-    if (currentIndex === 0) collectedResponses.name = selectedText;
     if (currentIndex === 1) collectedResponses.age = selectedText;
     if (currentIndex === 2) collectedResponses.geo = selectedText;
     if (currentIndex === 3) collectedResponses.q4 = selectedText;
@@ -75,14 +73,6 @@ function saveStepMetrics(selectedText, choiceIndex) {
     if (currentIndex === 8) collectedResponses.q9 = selectedText;
 
     if (currentIndex >= 3) { totalAccumulatedScore += (choiceIndex + 1); }
-
-    if(typeof gtag === 'function') {
-        gtag('event', 'audit_question_answered', {
-            'question_number': currentIndex + 1,
-            'question_text': auditQuestions[currentIndex].q,
-            'user_choice': selectedText
-        });
-    }
     progressAudit();
 }
 
@@ -134,18 +124,9 @@ function compileInsightsDashboard() {
         setTimeout(() => {
             indiaBarElement.style.width = paymentVulnerabilityIndex + "%";
             indiaBarElement.innerText = paymentVulnerabilityIndex + "%";
-            
             globalBarElement.style.width = subscriptionLeakIndex + "%";
             globalBarElement.innerText = subscriptionLeakIndex + "%";
         }, 150);
-    }
-
-    if(typeof gtag === 'function') {
-        gtag('event', 'audit_completed', {
-            'final_score': totalAccumulatedScore,
-            'assigned_persona': calculatedPersona,
-            'participant_region': collectedResponses.geo
-        });
     }
     dispatchFormToBackend(calculatedPersona);
 }
@@ -174,10 +155,17 @@ function dispatchFormToBackend(personaString) {
     const formUrl = `https://google.com{formId}/formResponse`;
 
     const formData = new FormData();
-    
     formData.append("entry.2108368405", collectedResponses.name);   
     formData.append("entry.48214385", collectedResponses.age);     
     formData.append("entry.1777157549", collectedResponses.geo);   
     formData.append("entry.1931755500", collectedResponses.q4);    
     formData.append("entry.533743517", collectedResponses.q5);     
     formData.append("entry.598789064", collectedResponses.q6);     
+    formData.append("entry.1058348873", collectedResponses.q7);    
+    formData.append("entry.778956994", collectedResponses.q8);     
+    formData.append("entry.1061432342", collectedResponses.q9);    
+
+    fetch(formUrl, { method: "POST", mode: "no-cors", body: formData })
+    .then(() => console.log("Google Sheet synchronized smoothly!"))
+    .catch((error) => console.error("Pipeline upload error:", error));
+}
