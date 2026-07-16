@@ -63,7 +63,6 @@ function renderMetric() {
 }
 
 function saveStepMetrics(selectedText, choiceIndex) {
-    // FIXED: Shifted metric collection index variables down by 1 to prevent slide freeze loops
     if (currentIndex === 1) collectedResponses.age = selectedText;
     if (currentIndex === 2) collectedResponses.geo = selectedText;
     if (currentIndex === 3) collectedResponses.q4 = selectedText;
@@ -170,4 +169,3 @@ function dispatchFormToBackend(personaString) {
     .then(() => console.log("Google Sheet synchronized smoothly!"))
     .catch((error) => console.error("Pipeline upload error:", error));
 }
-
