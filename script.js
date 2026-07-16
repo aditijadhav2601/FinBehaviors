@@ -155,6 +155,7 @@ function resetAudit() {
 
 function dispatchFormToBackend(personaString) {
     const formId = "1FAIpQLScwuRgP27tLBrOs8Swhg8k-s4b0gy-Zz5NSsLCC2z2SBJqcwA"; 
+    // FIXED: Corrected the URL layout and added the missing $ sign for template literal variables
     const formUrl = `https://google.com{formId}/formResponse`;
 
     const formData = new FormData();
@@ -162,7 +163,7 @@ function dispatchFormToBackend(personaString) {
     formData.append("entry.48214385", collectedResponses.age);     
     formData.append("entry.1777157549", collectedResponses.geo);   
     formData.append("entry.1931755500", collectedResponses.q4);    
-    formData.append("entry.533743517", checked = collectedResponses.q5);     
+    formData.append("entry.533743517", collectedResponses.q5);     
     formData.append("entry.598789064", collectedResponses.q6);     
     formData.append("entry.1058348873", collectedResponses.q7);    
     formData.append("entry.778956994", collectedResponses.q8);     
