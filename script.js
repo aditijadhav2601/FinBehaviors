@@ -155,19 +155,21 @@ function resetAudit() {
 
 function dispatchFormToBackend(personaString) {
     const formId = "1FAIpQLScwuRgP27tLBrOs8Swhg8k-s4b0gy-Zz5NSsLCC2z2SBJqcwA"; 
-    // FIXED: Form URL syntax reconstructed with template strings and correct Google Docs directory path
     const formUrl = `https://google.com{formId}/formResponse`;
 
     const formData = new FormData();
+    // Maps the 3 profile values to their exact confirmed entry codes
     formData.append("entry.2108368405", collectedResponses.name);   
     formData.append("entry.48214385", collectedResponses.age);     
     formData.append("entry.1777157549", collectedResponses.geo);   
-    formData.append("entry.1931755500", collectedResponses.q4);    
-    formData.append("entry.533743517", collectedResponses.q5);     
-    formData.append("entry.598789064", collectedResponses.q6);     
-    formData.append("entry.1058348873", collectedResponses.q7);    
-    formData.append("entry.778956994", collectedResponses.q8);     
-    formData.append("entry.1061432342", collectedResponses.q9);    
+    
+    // Maps the 6 audit questions sequentially based on your active form index keys
+    formData.append("entry.1931755500", collectedResponses.q1);    
+    formData.append("entry.533743517", collectedResponses.q2);     
+    formData.append("entry.598789064", collectedResponses.q3);     
+    formData.append("entry.1058348873", collectedResponses.q4);    
+    formData.append("entry.778956994", collectedResponses.q5);     
+    formData.append("entry.1061432342", collectedResponses.q6);    
 
     fetch(formUrl, { method: "POST", mode: "no-cors", body: formData })
     .then(() => console.log("Google Sheet synchronized smoothly!"))
