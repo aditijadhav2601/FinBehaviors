@@ -46,8 +46,9 @@ function renderMetric() {
         continueBtn.innerText = "Initialize Audit Tracking";
         continueBtn.onclick = () => {
             const entryValue = document.getElementById("audit-name-field").value.trim();
-            collectedResponses.name = entryValue ? entryValue : "Anonymous Participant";
-            progressAudit();
+            const finalName = entryValue ? entryValue : "Anonymous Participant";
+            // FIXED: Triggers data validation tracking loop for Name immediately 
+            saveStepMetrics(finalName, 0);
         };
         optionsContainer.appendChild(input);
         optionsContainer.appendChild(continueBtn);
@@ -63,6 +64,8 @@ function renderMetric() {
 }
 
 function saveStepMetrics(selectedText, choiceIndex) {
+    // FIXED: Chronological index array alignment maps inputs accurately without skipping fields
+    if (currentIndex === 0) collectedResponses.name = selectedText;
     if (currentIndex === 1) collectedResponses.age = selectedText;
     if (currentIndex === 2) collectedResponses.geo = selectedText;
     if (currentIndex === 3) collectedResponses.q4 = selectedText;
@@ -159,7 +162,7 @@ function dispatchFormToBackend(personaString) {
     formData.append("entry.48214385", collectedResponses.age);     
     formData.append("entry.1777157549", collectedResponses.geo);   
     formData.append("entry.1931755500", collectedResponses.q4);    
-    formData.append("entry.533743517", collectedResponses.q5);     
+    formData.append("entry.533743517", checked = collectedResponses.q5);     
     formData.append("entry.598789064", collectedResponses.q6);     
     formData.append("entry.1058348873", collectedResponses.q7);    
     formData.append("entry.778956994", collectedResponses.q8);     
