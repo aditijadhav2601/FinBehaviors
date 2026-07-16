@@ -158,12 +158,9 @@ function dispatchFormToBackend(personaString) {
     const formUrl = `https://google.com{formId}/formResponse`;
 
     const formData = new FormData();
-    // Maps the 3 profile values to their exact confirmed entry codes
     formData.append("entry.2108368405", collectedResponses.name);   
     formData.append("entry.48214385", collectedResponses.age);     
     formData.append("entry.1777157549", collectedResponses.geo);   
-    
-    // Maps the 6 audit questions sequentially based on your active form index keys
     formData.append("entry.1931755500", collectedResponses.q1);    
     formData.append("entry.533743517", collectedResponses.q2);     
     formData.append("entry.598789064", collectedResponses.q3);     
