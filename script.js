@@ -159,12 +159,15 @@ function dispatchFormToBackend(personaString) {
 
         // Use URLSearchParams for application/x-www-form-urlencoded encoding
     const params = new URLSearchParams();
-    params.append("entry.1931755500", String(collectedResponses.q1 || ""));    
-    params.append("entry.533743517", String(collectedResponses.q2 || ""));     
-    params.append("entry.598789064", String(collectedResponses.q3 || ""));     
-    params.append("entry.1058348873", String(collectedResponses.q4 || ""));    
-    params.append("entry.778956994", String(collectedResponses.q5 || ""));     
-    params.append("entry.1061432342", String(collectedResponses.q6 || ""));    
+    params.append("entry.2108368405", String(collectedResponses.q1 || ""));   
+    params.append("entry.48214385", String(collectedResponses.q2 || ""));     
+    params.append("entry.1777157549", String(collectedResponses.q3 || ""));   
+    params.append("entry.1931755500", String(collectedResponses.q4 || ""));    
+    params.append("entry.533743517", String(collectedResponses.q5 || ""));     
+    params.append("entry.598789064", String(collectedResponses.q6 || ""));     
+    params.append("entry.1058348873", String(collectedResponses.q7 || ""));    
+    params.append("entry.778956994", String(collectedResponses.q8 || ""));     
+    params.append("entry.1061432342", String(collectedResponses.q9 || ""));    
 
     fetch(formUrl, { 
         method: "POST", 
