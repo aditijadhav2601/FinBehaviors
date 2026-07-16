@@ -155,7 +155,7 @@ function resetAudit() {
 
 function dispatchFormToBackend(personaString) {
     const formId = "1FAIpQLScwuRgP27tLBrOs8Swhg8k-s4b0gy-Zz5NSsLCC2z2SBJqcwA"; 
-    const formUrl = `https://docs.google.com/forms/d/e/${formid}/formResponse`;
+    const formUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
 
     const formData = new FormData();
     formData.append("entry.2108368405", collectedResponses.name);   
