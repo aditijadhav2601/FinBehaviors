@@ -165,46 +165,6 @@ function compileInsightsDashboard() {
     }
 
             // INJECT THE NEW SPENDING RISK REPORT CARD WITH CHOICE TEXTS
-        // INJECT THE NEW SPENDING RISK REPORT CARD WITH CHOSEN HEADINGS
-    let graphDashboard = document.getElementById("spending-risk-report-card");
-    if (!graphDashboard) {
-        graphDashboard = document.createElement("div");
-        graphDashboard.id = "spending-risk-report-card";
-        graphDashboard.className = "analytics-dashboard";
-        graphDashboard.style.background = "#0f172a";
-        graphDashboard.style.color = "#ffffff";
-        graphDashboard.style.padding = "25px";
-        graphDashboard.style.borderRadius = "12px";
-        graphDashboard.style.marginTop = "25px";
-        graphDashboard.style.fontFamily = "sans-serif";
-        graphDashboard.style.border = "1px solid #1e293b";
-        
-        graphDashboard.innerHTML = `
-            <h3 style="margin: 0 0 20px 0; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; display: flex; align-items: center; gap: 8px; color: #ffffff;">📊 Your Spending Risk Report</h3>
-            
-            <div class="visual-bar-group" style="margin-bottom: 24px;">
-                <div class="bar-label" style="font-weight: 700; font-size: 14px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; color: #ffffff;">🛒 Fast Buying Risk</div>
-                <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 10px; line-height: 1.4;">Shows how easily quick phone apps and online ads trick you into buying things instantly. A high number means you spend too fast without thinking.</div>
-                <div class="mock-bar" style="background: #1e293b; border-radius: 6px; overflow: hidden; height: 24px;">
-                    <div id="india-bar" class="fill-bar" style="background: #6366f1; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; transition: width 0.8s ease-out; width: 0%;">0%</div>
-                </div>
-            </div>
-
-            <div class="visual-bar-group">
-                <div class="bar-label" style="font-weight: 700; font-size: 14px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; color: #ffffff;">💸 Hidden Bill Leak</div>
-                <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 10px; line-height: 1.4;">Tracks if you are wasting cash on forgotten apps or free trials every month. A low number means your monthly bills are perfectly safe and locked down.</div>
-                <div class="mock-bar" style="background: #1e293b; border-radius: 6px; overflow: hidden; height: 24px;">
-                    <div id="global-bar" class="fill-bar" style="background: #10b981; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; transition: width 0.8s ease-out; width: 0%;">0%</div>
-                </div>
-            </div>
-        `;
-        
-        const resultWrapper = document.getElementById("audit-result");
-        if (resultWrapper) {
-            resultWrapper.appendChild(graphDashboard);
-        }
-    }
-
 
 
         let paymentVulnerabilityIndex = Math.round((totalAccumulatedScore / 15) * 100);
