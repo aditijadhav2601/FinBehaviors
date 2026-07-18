@@ -216,37 +216,38 @@ function compileInsightsDashboard() {
         }
     }
 
-    const solutionHeading = document.getElementById("solution-heading");
+        const solutionHeading = document.getElementById("solution-heading");
     const solutionContent = document.getElementById("solution-content-area");
+    const solutionBox = document.getElementById("dynamic-solutions-box");
 
-    if (solutionContent && solutionHeading) {
+    if (solutionContent && solutionHeading && solutionBox) {
         let explanationText = "";
         let actionSteps = "";
 
         if (paymentVulnerabilityIndex >= 70) {
-            explanationText += `<p>🚨 <strong>What's happening (Payment Index: ${paymentVulnerabilityIndex}%):</strong> Your guard is completely down against smooth digital payment pathways. Because quick one-click checkouts, UPI scans, and saved cards remove all physical friction, your brain bypasses financial reflection, driving high impulse spending.</p>`;
-            actionSteps += `<li><strong>Add deliberate friction:</strong> Delete saved credit cards from your Amazon and food delivery apps so you have to type them out every single time.</li>`;
+            explanationText += `<p>🚨 <strong>Fast Buying Habit (${paymentVulnerabilityIndex}% Risk):</strong> You spend money way too quickly online. Because apps store your credit cards and let you scan or buy things with just one click, you end up buying items on impulse before your brain has time to think it over.</p>`;
+            actionSteps += `<li><strong>Make it harder to buy:</strong> Delete your saved credit cards from your favorite shopping and food delivery apps. Forcing yourself to manually type your card numbers every single time stops you from impulse buying instantly!</li>`;
         } else {
-            explanationText += `<p>✅ <strong>What's happening (Payment Index: ${paymentVulnerabilityIndex}%):</strong> You maintain solid mental checkpoints over your payment channels and rarely fall victim to impulse checkout buttons or emotional spending triggers.</p>`;
+            explanationText += `<p>✅ <strong>Fast Buying Habit (${paymentVulnerabilityIndex}% Risk):</strong> You have excellent control over your online shopping. One-click checkouts and phone scanning tricks don't force you into buying things on impulse.</p>`;
         }
 
         if (subscriptionLeakIndex >= 60) {
-            explanationText += `<p>⚠️ <strong>What's happening (Leakage Index: ${subscriptionLeakIndex}%):</strong> Your wallet is experiencing silent financial bleeding. Tech companies are capitalising on your forgetfulness by locking you into automated billing trial loops for digital tools you aren't actively using.</p>`;
-            actionSteps += `<li><strong>Run a leak audit:</strong> Open your banking app right now, list every transaction under ₹500, and cancel at least two streaming/app accounts you haven't opened this week.</li>`;
+            explanationText += `<p>⚠️ <strong>Monthly Bills Audit (${subscriptionLeakIndex}% Leak):</strong> You are losing money on hidden automated bills. Companies are charging you every single month because you forget to cancel free trial accounts or cancel subscriptions you no longer use.</p>`;
+            actionSteps += `<li><strong>Run a leak audit:</strong> Open your banking app right now, list every monthly transaction under ₹500, and cancel at least two streaming apps or memberships you haven't used this week.</li>`;
         } else {
-            explanationText += `<p>🛡️ <strong>What's happening (Leakage Index: ${subscriptionLeakIndex}%):</strong> Your recurring subscription management is exceptionally clean. You actively intercept trial loops and keep your cash securely locked within your own boundaries.</p>`;
+            explanationText += `<p>🛡️ <strong>Monthly Bills Audit (${subscriptionLeakIndex}% Leak):</strong> Your recurring monthly bills are incredibly clean! You do an excellent job keeping track of your streaming apps and canceling free trials before they auto-charge your account.</p>`;
         }
 
         if (actionSteps !== "") {
-            solutionHeading.innerText = "🚨 Identified Budget Leaks & Quick Solutions";
+            solutionHeading.innerText = "⚠️ Your Wallet Risks & Solutions";
             solutionHeading.style.color = "#ef4444";
             solutionBox.style.borderColor = "#ef4444";
             solutionBox.style.backgroundColor = "#fffdfd";
             
             solutionContent.innerHTML = explanationText + `
-                <div style="background: #fff5f5; padding: 15px; border-radius: 6px; border-left: 4px solid #ef4444; margin-top: 10px;">
-                    <strong style="color: #991b1b; display: block; margin-bottom: 8px;">🛠️ Immediate Corrections Required:</strong>
-                    <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; padding-left: 5px;">
+                <div style="background: #fff5f5; padding: 15px; border-radius: 6px; border-left: 4px solid #ef4444; margin-top: 10px; box-sizing: border-box; width: 100%;">
+                    <strong style="color: #991b1b; display: block; margin-bottom: 8px; font-size: 14px;">🛠️ Easy Fixes to Try Right Now:</strong>
+                    <ul style="margin-left: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 0; margin-bottom: 0;">
                         ${actionSteps}
                     </ul>
                 </div>
@@ -258,13 +259,14 @@ function compileInsightsDashboard() {
             solutionBox.style.backgroundColor = "#f0fdf4";
             
             solutionContent.innerHTML = explanationText + `
-                <div style="background: #f0fdf4; padding: 15px; border-radius: 6px; border-left: 4px solid #10b981; margin-top: 10px;">
-                    <strong style="color: #065f46; display: block;">💡 Pro Tip to Maintain This Excellence:</strong>
-                    <p style="color: #065f46; margin-top: 5px; font-size: 13.5px;">Keep leveraging reward tools and points optimization systems, but ensure you schedule a single 10-minute automated baseline review every quarter to keep things tight.</p>
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 6px; border-left: 4px solid #10b981; margin-top: 10px; box-sizing: border-box; width: 100%;">
+                    <strong style="color: #065f46; display: block; font-size: 14px;">💡 Pro Tip to Maintain This Excellence:</strong>
+                    <p style="color: #065f46; margin-top: 5px; font-size: 13.5px; margin-bottom: 0;">Keep managing your boundaries perfectly! Schedule a single 10-minute reminder on your phone once every 3 months just to verify no new trial tracking apps sneak into your account balances.</p>
                 </div>
             `;
         }
     }
+
     // =========================================================================
 
     dispatchFormToBackend(calculatedPersona);
