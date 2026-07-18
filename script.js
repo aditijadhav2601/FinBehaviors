@@ -216,9 +216,10 @@ function compileInsightsDashboard() {
         }
     }
 
-        const solutionHeading = document.getElementById("solution-heading");
+           // FIXED: Cleans up the duplicate element mapping loop references
+    const solutionHeading = document.getElementById("solution-heading");
     const solutionContent = document.getElementById("solution-content-area");
-    const solutionBox = document.getElementById("dynamic-solutions-box");
+
 
     if (solutionContent && solutionHeading && solutionBox) {
         let explanationText = "";
@@ -238,11 +239,11 @@ function compileInsightsDashboard() {
             explanationText += `<p>🛡️ <strong>Monthly Bills Audit (${subscriptionLeakIndex}% Leak):</strong> Your recurring monthly bills are incredibly clean! You do an excellent job keeping track of your streaming apps and canceling free trials before they auto-charge your account.</p>`;
         }
 
-        if (actionSteps !== "") {
+                if (actionSteps !== "") {
             solutionHeading.innerText = "⚠️ Your Wallet Risks & Solutions";
             solutionHeading.style.color = "#ef4444";
             solutionBox.style.borderColor = "#ef4444";
-            solutionBox.style.backgroundColor = "#fffdfd";
+            solutionBox.style.backgroundColor = "#ffffff"; // FIXED: Keeps background clean white
             
             solutionContent.innerHTML = explanationText + `
                 <div style="background: #fff5f5; padding: 15px; border-radius: 6px; border-left: 4px solid #ef4444; margin-top: 10px; box-sizing: border-box; width: 100%;">
@@ -256,7 +257,8 @@ function compileInsightsDashboard() {
             solutionHeading.innerText = "🏆 Premium Financial Profile Maintained";
             solutionHeading.style.color = "#10b981";
             solutionBox.style.borderColor = "#10b981";
-            solutionBox.style.backgroundColor = "#f0fdf4";
+            solutionBox.style.backgroundColor = "#ffffff"; // FIXED: Keeps background clean white
+
             
             solutionContent.innerHTML = explanationText + `
                 <div style="background: #f0fdf4; padding: 15px; border-radius: 6px; border-left: 4px solid #10b981; margin-top: 10px; box-sizing: border-box; width: 100%;">
