@@ -149,6 +149,81 @@ function compileInsightsDashboard() {
             globalBarElement.innerText = subscriptionLeakIndex + "%";
         }, 150);
     }
+
+    let solutionBox = document.getElementById("dynamic-solutions-box");
+    if (!solutionBox) {
+        solutionBox = document.createElement("div");
+        solutionBox.id = "dynamic-solutions-box";
+        solutionBox.className = "active-persona-box";
+        solutionBox.style.marginTop = "25px";
+        solutionBox.style.backgroundColor = "#ffffff";
+        solutionBox.style.borderWidth = "2px";
+        solutionBox.style.borderStyle = "solid";
+        solutionBox.style.borderRadius = "8px";
+        solutionBox.style.padding = "25px";
+        
+        solutionBox.innerHTML = `
+            <h2 id="solution-heading" style="font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">🔍 Personal Risk Breakdown & Action Plan</h2>
+            <div id="solution-content-area" style="font-size: 14.5px; color: #334155; display: flex; flex-direction: column; gap: 15px;"></div>
+        `;
+        
+        const resetBtn = document.querySelector(".reset-btn");
+        if (resetBtn && resetBtn.parentNode) {
+            resetBtn.parentNode.insertBefore(solutionBox, resetBtn);
+        }
+    }
+
+    const solutionHeading = document.getElementById("solution-heading");
+    const solutionContent = document.getElementById("solution-content-area");
+
+    if (solutionContent && solutionHeading) {
+        let explanationText = "";
+        let actionSteps = "";
+
+        if (paymentVulnerabilityIndex >= 70) {
+            explanationText += `<p>🚨 <strong>What's happening (Payment Index: ${paymentVulnerabilityIndex}%):</strong> Your guard is completely down against smooth digital payment pathways. Because quick one-click checkouts, UPI scans, and saved cards remove all physical friction, your brain bypasses financial reflection, driving high impulse spending.</p>`;
+            actionSteps += `<li><strong>Add deliberate friction:</strong> Delete saved credit cards from your Amazon and food delivery apps so you have to type them out every single time.</li>`;
+        } else {
+            explanationText += `<p>✅ <strong>What's happening (Payment Index: ${paymentVulnerabilityIndex}%):</strong> You maintain solid mental checkpoints over your payment channels and rarely fall victim to impulse checkout buttons or emotional spending triggers.</p>`;
+        }
+
+        if (subscriptionLeakIndex >= 60) {
+            explanationText += `<p>⚠️ <strong>What's happening (Leakage Index: ${subscriptionLeakIndex}%):</strong> Your wallet is experiencing silent financial bleeding. Tech companies are capitalising on your forgetfulness by locking you into automated billing trial loops for digital tools you aren't actively using.</p>`;
+            actionSteps += `<li><strong>Run a leak audit:</strong> Open your banking app right now, list every transaction under ₹500, and cancel at least two streaming/app accounts you haven't opened this week.</li>`;
+        } else {
+            explanationText += `<p>🛡️ <strong>What's happening (Leakage Index: ${subscriptionLeakIndex}%):</strong> Your recurring subscription management is exceptionally clean. You actively intercept trial loops and keep your cash securely locked within your own boundaries.</p>`;
+        }
+
+        if (actionSteps !== "") {
+            solutionHeading.innerText = "🚨 Identified Budget Leaks & Quick Solutions";
+            solutionHeading.style.color = "#ef4444";
+            solutionBox.style.borderColor = "#ef4444";
+            solutionBox.style.backgroundColor = "#fffdfd";
+            
+            solutionContent.innerHTML = explanationText + `
+                <div style="background: #fff5f5; padding: 15px; border-radius: 6px; border-left: 4px solid #ef4444; margin-top: 10px;">
+                    <strong style="color: #991b1b; display: block; margin-bottom: 8px;">🛠️ Immediate Corrections Required:</strong>
+                    <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; padding-left: 5px;">
+                        ${actionSteps}
+                    </ul>
+                </div>
+            `;
+        } else {
+            solutionHeading.innerText = "🏆 Premium Financial Profile Maintained";
+            solutionHeading.style.color = "#10b981";
+            solutionBox.style.borderColor = "#10b981";
+            solutionBox.style.backgroundColor = "#f0fdf4";
+            
+            solutionContent.innerHTML = explanationText + `
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 6px; border-left: 4px solid #10b981; margin-top: 10px;">
+                    <strong style="color: #065f46; display: block;">💡 Pro Tip to Maintain This Excellence:</strong>
+                    <p style="color: #065f46; margin-top: 5px; font-size: 13.5px;">Keep leveraging reward tools and points optimization systems, but ensure you schedule a single 10-minute automated baseline review every quarter to keep things tight.</p>
+                </div>
+            `;
+        }
+    }
+    // =========================================================================
+
     dispatchFormToBackend(calculatedPersona);
 }
 
@@ -167,6 +242,10 @@ function resetAudit() {
     document.getElementById("india-bar").style.width = "0%";
     document.getElementById("global-bar").style.width = "0%";
     document.querySelectorAll(".matrix-row").forEach(el => el.className = "matrix-row");
+    
+    const oldSolutionBox = document.getElementById("dynamic-solutions-box");
+    if (oldSolutionBox) { oldSolutionBox.remove(); }
+    
     document.getElementById("audit-result").classList.add("hidden");
     document.getElementById("audit-intro").classList.remove("hidden");
 }
