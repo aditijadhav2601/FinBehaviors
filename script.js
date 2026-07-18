@@ -104,6 +104,7 @@ function compileInsightsDashboard() {
     const titleArea = document.getElementById("persona-title-area");
     const descArea = document.getElementById("persona-desc-area");
     let calculatedPersona = "The Algorithmic Target";
+    const activeBox = document.querySelector(".active-persona-box");
 
     document.querySelectorAll(".matrix-row").forEach(el => el.className = "matrix-row");
 
@@ -164,6 +165,7 @@ function compileInsightsDashboard() {
     }
 
             // INJECT THE NEW SPENDING RISK REPORT CARD WITH CHOICE TEXTS
+        // INJECT THE NEW SPENDING RISK REPORT CARD WITH CHOSEN HEADINGS
     let graphDashboard = document.getElementById("spending-risk-report-card");
     if (!graphDashboard) {
         graphDashboard = document.createElement("div");
@@ -202,6 +204,7 @@ function compileInsightsDashboard() {
             resultWrapper.appendChild(graphDashboard);
         }
     }
+
 
 
         let paymentVulnerabilityIndex = Math.round((totalAccumulatedScore / 15) * 100);
