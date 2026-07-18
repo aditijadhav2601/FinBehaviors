@@ -107,24 +107,60 @@ function compileInsightsDashboard() {
 
     document.querySelectorAll(".matrix-row").forEach(el => el.className = "matrix-row");
 
-        if (totalAccumulatedScore >= 5 && totalAccumulatedScore <= 8) {
+            if (totalAccumulatedScore >= 5 && totalAccumulatedScore <= 8) {
         calculatedPersona = "The Defensive Saver";
         titleArea.innerText = "🛡️ " + calculatedPersona;
-        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You maintain strict, manual control over your money to prevent hidden account leaks. You are completely safe from modern app traps, but you miss out on free rewards and cash back.`;
+        
+        descArea.innerHTML = `
+            <div style="display: inline-flex; align-items: center; background: #0f172a; color: #ffffff; border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; margin-bottom: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-family: sans-serif;">
+                <span style="color: #94a3b8; margin-right: 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">PARTICIPANT</span>
+                <span style="border-left: 1px solid #334155; height: 12px; margin-right: 8px;"></span>
+                <span style="letter-spacing: 0.2px;">${collectedResponses.name}</span>
+            </div>
+            <p style="margin: 0; padding: 0; line-height: 1.5;">You maintain strict, manual control over your money to prevent hidden account leaks. You are completely safe from modern app traps, but you miss out on free rewards and cash back.</p>
+        `;
         highlightMatrixBracket("bracket-guardian");
-        // ... your styling overrides ...
+        if(activeBox) {
+            activeBox.style.borderColor = "#6366f1";
+            activeBox.style.boxShadow = "none";
+            activeBox.style.backgroundColor = "#f5f3ff";
+        }
     } else if (totalAccumulatedScore >= 9 && totalAccumulatedScore <= 11) {
         calculatedPersona = "The Strategic Spender";
         titleArea.innerText = "🏆 " + calculatedPersona;
-        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You use modern tools strategically to collect points, cash back, and the best discounts. You enjoy the speed of tech platforms without letting them trick you into overspending.`;
+        
+        descArea.innerHTML = `
+            <div style="display: inline-flex; align-items: center; background: #0f172a; color: #ffffff; border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; margin-bottom: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-family: sans-serif;">
+                <span style="color: #94a3b8; margin-right: 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">PARTICIPANT</span>
+                <span style="border-left: 1px solid #334155; height: 12px; margin-right: 8px;"></span>
+                <span style="letter-spacing: 0.2px;">${collectedResponses.name}</span>
+            </div>
+            <p style="margin: 0; padding: 0; line-height: 1.5;">You use modern tools strategically to collect points, cash back, and the best discounts. You enjoy the speed of tech platforms without letting them trick you into overspending.</p>
+        `;
         highlightMatrixBracket("bracket-optimizer");
-        // ... your styling overrides ...
+        if(activeBox) {
+            activeBox.style.borderColor = "#10b981";
+            activeBox.style.boxShadow = "0 4px 12px rgba(16, 185, 129, 0.15)";
+            activeBox.style.backgroundColor = "#f0fdf4";
+        }
     } else {
         calculatedPersona = "The Instant Buyer";
         titleArea.innerText = "🎯 " + calculatedPersona;
-        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You are highly vulnerable to one-click checkouts, instant scanning apps, and targeted social media ads. Your money disappears quickly because tech platforms make spending completely effortless.`;
+        
+        descArea.innerHTML = `
+            <div style="display: inline-flex; align-items: center; background: #0f172a; color: #ffffff; border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; margin-bottom: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-family: sans-serif;">
+                <span style="color: #94a3b8; margin-right: 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">PARTICIPANT</span>
+                <span style="border-left: 1px solid #334155; height: 12px; margin-right: 8px;"></span>
+                <span style="letter-spacing: 0.2px;">${collectedResponses.name}</span>
+            </div>
+            <p style="margin: 0; padding: 0; line-height: 1.5;">You are highly vulnerable to one-click checkouts, instant scanning apps, and targeted social media ads. Your money disappears quickly because tech platforms make spending completely effortless.</p>
+        `;
         highlightMatrixBracket("bracket-target");
-        // ... your styling overrides ...
+        if(activeBox) {
+            activeBox.style.borderColor = "#ef4444";
+            activeBox.style.boxShadow = "none";
+            activeBox.style.backgroundColor = "#fdf2f2";
+        }
     }
 
 
