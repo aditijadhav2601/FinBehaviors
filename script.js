@@ -90,6 +90,12 @@ function saveStepMetrics(selectedText, choiceIndex) {
 
 
 function progressAudit() {
+    // Track progress for each question step before moving forward
+    gtag('event', 'quiz_step_complete', {
+        'question_number': currentIndex + 1,
+        'question_text': auditQuestions[currentIndex].q
+    });
+    
     currentIndex++;
     if (currentIndex < auditQuestions.length) { renderMetric(); } 
     else { compileInsightsDashboard(); }
@@ -169,7 +175,12 @@ function compileInsightsDashboard() {
 
         let paymentVulnerabilityIndex = Math.round((totalAccumulatedScore / 15) * 100);
     let subscriptionLeakIndex = 30; 
-    
+
+    gtag('event', 'risk_metrics_calculated', {
+    'fast_buying_risk_percent': paymentVulnerabilityIndex,
+    'subscription_leak_percent': subscriptionLeakIndex
+});
+
     // Checks if the user selected the high-risk option for Q4
     if (collectedResponses.q4 === "I have no clue what apps are charging my card.") {
         subscriptionLeakIndex += 35;
@@ -269,6 +280,11 @@ function compileInsightsDashboard() {
         }
     }
 
+    gtag('event', 'quiz_completed', {
+    'persona_type': calculatedPersona,
+    'final_score': totalAccumulatedScore
+});
+
     // =========================================================================
 
     dispatchFormToBackend(calculatedPersona);
@@ -282,6 +298,8 @@ function highlightMatrixBracket(targetId) {
 }
 
 function resetAudit() {
+    gtag('event', 'quiz_reset_clicked');
+
     currentIndex = 0;
     totalAccumulatedScore = 0;
     collectedResponses = { name: "", age: "", geo: "", q4: "", q5: "", q6: "", q7: "", q8: "", q9: "" };
