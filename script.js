@@ -107,22 +107,26 @@ function compileInsightsDashboard() {
 
     document.querySelectorAll(".matrix-row").forEach(el => el.className = "matrix-row");
 
-    if (totalAccumulatedScore >= 5 && totalAccumulatedScore <= 8) {
-        calculatedPersona = "The Financial Guardian";
+        if (totalAccumulatedScore >= 5 && totalAccumulatedScore <= 8) {
+        calculatedPersona = "The Defensive Saver";
         titleArea.innerText = "🛡️ " + calculatedPersona;
-        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You maintain strict, conscious boundaries with your capital. You resist impulse digital upgrades and closely monitor automated account leaks.`;
+        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You maintain strict, manual control over your money to prevent hidden account leaks. You are completely safe from modern app traps, but you miss out on free rewards and cash back.`;
         highlightMatrixBracket("bracket-guardian");
+        // ... your styling overrides ...
     } else if (totalAccumulatedScore >= 9 && totalAccumulatedScore <= 11) {
-        calculatedPersona = "The Value Optimizer";
+        calculatedPersona = "The Strategic Spender";
         titleArea.innerText = "🏆 " + calculatedPersona;
-        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You treat personal finance strategically. You track metrics, maximize credit rewards, and consciously balance modern convenience with savings.`;
+        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You use modern tools strategically to collect points, cash back, and the best discounts. You enjoy the speed of tech platforms without letting them trick you into overspending.`;
         highlightMatrixBracket("bracket-optimizer");
+        // ... your styling overrides ...
     } else {
-        calculatedPersona = "The Algorithmic Target";
+        calculatedPersona = "The Instant Buyer";
         titleArea.innerText = "🎯 " + calculatedPersona;
-        descArea.innerText = `Subject Profile: ${collectedResponses.name}. Frictionless tech platforms easily catch your budget. Digital wallets, automated trials, and hyper-targeted loops deeply influence your daily cash flow.`;
+        descArea.innerText = `Subject Profile: ${collectedResponses.name}. You are highly vulnerable to one-click checkouts, instant scanning apps, and targeted social media ads. Your money disappears quickly because tech platforms make spending completely effortless.`;
         highlightMatrixBracket("bracket-target");
+        // ... your styling overrides ...
     }
+
 
         let paymentVulnerabilityIndex = Math.round((totalAccumulatedScore / 15) * 100);
     let subscriptionLeakIndex = 30; 
